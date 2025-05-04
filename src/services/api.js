@@ -8,7 +8,7 @@ export const getAllCountries = async () => {
     return response.data;
   } catch (error) {
     console.error("Error fetching all countries:", error);
-    return [];
+    return null;
   }
 };
 
@@ -35,7 +35,7 @@ export const getCountriesByRegion = async (region) => {
 export const getCountryByCode = async (code) => {
   try {
     const response = await axios.get(`${API_BASE}/alpha/${code}`);
-    return response.data;
+    return response.data[0];
   } catch (error) {
     console.error("Error fetching country by code:", error);
     return null;
