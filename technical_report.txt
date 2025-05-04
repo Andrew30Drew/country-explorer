@@ -1,0 +1,50 @@
+Technical Report: Country Explorer Application
+===========================================
+
+1. API Selection and Implementation
+---------------------------------
+
+Primary API: REST Countries API (https://restcountries.com/)
+
+API Endpoints Utilized:
+- GET /v3.1/all: Fetches all countries
+- GET /v3.1/name/{name}: Searches countries by name
+- GET /v3.1/region/{region}: Filters countries by region
+- GET /v3.1/alpha/{code}: Retrieves specific country by code
+
+2. Technical Challenges and Solutions
+-----------------------------------
+
+a) API Response Handling
+   Challenge: Inconsistent data structures between endpoints and occasional missing data.
+   Solution: 
+   - Implemented data normalization layer in api.js
+   - Added null checks for optional fields
+   - Created fallback values for missing data
+   - Standardized error handling across all API calls
+
+b) Performance Issues
+   Challenge: Loading and rendering large datasets caused performance issues.
+   Solution:
+   - Implemented skeleton loading screens
+   - Optimized re-renders using React.memo
+   - Added error boundaries for better error handling
+   - Implemented lazy loading for images
+
+
+c) Dark Mode Implementation
+   Challenge: Consistent theme switching and persistence.
+   Solution:
+   - Created ThemeContext using React Context API
+   - Used localStorage for theme persistence
+   - Implemented system preference detection
+   - Added smooth transitions between themes
+
+5. Testing Strategy
+------------------
+
+Implemented Tests:
+- Unit tests for API service functions
+- Component tests using React Testing Library
+- Integration tests for search and filter functionality
+- Accessibility tests for core components
